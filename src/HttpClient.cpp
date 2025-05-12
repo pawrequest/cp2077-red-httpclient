@@ -13,9 +13,11 @@ HttpPlugin* HttpClient::plugin = HttpPlugin::get();
 
 bool HttpClient::is_secure(const Red::CString& p_url) {
   std::string url(p_url.c_str());
-
-//  return url.starts_with("https://");
-  return true;
+  std::regex local_regex("^(https?:\/\/)?(localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1]))");
+  if (std::regex_search(url, local_regex)) {
+      return true;
+  }
+  return url.starts_with("https://");
 }
 
 cpr::Header HttpClient::build_headers(

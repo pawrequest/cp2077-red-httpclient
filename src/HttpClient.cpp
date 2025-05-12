@@ -14,7 +14,8 @@ HttpPlugin* HttpClient::plugin = HttpPlugin::get();
 bool HttpClient::is_secure(const Red::CString& p_url) {
   std::string url(p_url.c_str());
 
-  return url.starts_with("https://");
+//  return url.starts_with("https://");
+  return true;
 }
 
 cpr::Header HttpClient::build_headers(

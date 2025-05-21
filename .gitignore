@@ -3,6 +3,7 @@
 
 # CMake build
 build/
+built/
 
 # Scripts bundle
 dist/
